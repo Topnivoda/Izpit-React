@@ -4,6 +4,11 @@
       "id": "1",
       "email": "test@example.com",
       "password": "123456"
+    },
+    {
+      "id": "db3c",
+      "email": "rum3152@gmail.com",
+      "password": "456258"
     }
   ],
   "exercises": [
@@ -26,10 +31,60 @@
       "type": "strenght"
     },
     {
-      "id": "4fd8",
-      "name": "GAY SIT UPS",
-      "duration": 90000,
-      "type": "HYBRID"
+      "id": "2b52",
+      "name": "PULL UPS",
+      "duration": 4,
+      "reps": 40,
+      "type": "Upper body"
+    },
+    {
+      "id": "65b5",
+      "name": "de",
+      "duration": 1,
+      "reps": 1,
+      "type": "ada"
+    },
+    {
+      "id": "0725",
+      "name": "hehe",
+      "duration": 2,
+      "reps": 123,
+      "type": "upper"
+    },
+    {
+      "id": "1a84",
+      "name": "Pull ups",
+      "duration": 2,
+      "reps": 15,
+      "type": "strength"
+    },
+    {
+      "id": "73ca",
+      "name": "Pull ups",
+      "duration": 2,
+      "reps": 123,
+      "type": "strength"
+    },
+    {
+      "id": "5a10",
+      "name": "Pull ups",
+      "duration": 2,
+      "reps": 12431,
+      "type": "strength"
+    },
+    {
+      "id": "f059",
+      "name": "Pull ups",
+      "duration": 2,
+      "reps": 231,
+      "type": "strength"
+    },
+    {
+      "id": "94fd",
+      "name": "Pull ups",
+      "duration": 2,
+      "reps": 20,
+      "type": "strength"
     }
   ]
 }
