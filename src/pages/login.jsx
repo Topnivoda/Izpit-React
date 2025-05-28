@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -14,8 +15,20 @@ export default function Login() {
     }
 
     setError("");
-    // TODO: Add your login logic here
-    alert(`Logging in with:\nEmail: ${email}\nPassword: ${password}`);
+
+    axios
+      .get(`http://localhost:3001/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`)
+      .then((res) => {
+        if (res.data.length === 1) {
+          alert("Login successful!");
+          // TODO: Handle login state, e.g., save user info, redirect, etc.
+        } else {
+          setError("Invalid email or password.");
+        }
+      })
+      .catch(() => {
+        setError("Server error. Please try again later.");
+      });
   };
 
   return (
@@ -23,7 +36,9 @@ export default function Login() {
       <form style={styles.form} onSubmit={handleSubmit}>
         <h2 style={styles.title}>Login</h2>
 
-        <label style={styles.label} htmlFor="email">Email</label>
+        <label style={styles.label} htmlFor="email">
+          Email
+        </label>
         <input
           style={styles.input}
           id="email"
@@ -33,7 +48,9 @@ export default function Login() {
           placeholder="you@example.com"
         />
 
-        <label style={styles.label} htmlFor="password">Password</label>
+        <label style={styles.label} htmlFor="password">
+          Password
+        </label>
         <input
           style={styles.input}
           id="password"

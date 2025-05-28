@@ -1,0 +1,35 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "email": "test@example.com",
+      "password": "123456"
+    }
+  ],
+  "exercises": [
+    {
+      "id": "1",
+      "name": "Running",
+      "duration": 30,
+      "type": "Cardio"
+    },
+    {
+      "id": "2",
+      "name": "Push-ups",
+      "duration": 15,
+      "type": "Strength"
+    },
+    {
+      "id": "7398",
+      "name": "Pull-ups",
+      "duration": 0.3,
+      "type": "strenght"
+    },
+    {
+      "id": "4fd8",
+      "name": "GAY SIT UPS",
+      "duration": 90000,
+      "type": "HYBRID"
+    }
+  ]
+}
