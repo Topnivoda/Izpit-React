@@ -9,6 +9,11 @@
       "id": "db3c",
       "email": "rum3152@gmail.com",
       "password": "456258"
+    },
+    {
+      "id": "b7ec",
+      "email": "afgan@gmail.com",
+      "password": "332332"
     }
   ],
   "exercises": [
@@ -38,53 +43,11 @@
       "type": "Upper body"
     },
     {
-      "id": "65b5",
-      "name": "de",
-      "duration": 1,
-      "reps": 1,
-      "type": "ada"
-    },
-    {
-      "id": "0725",
-      "name": "hehe",
-      "duration": 2,
-      "reps": 123,
-      "type": "upper"
-    },
-    {
-      "id": "1a84",
+      "id": "01fe",
       "name": "Pull ups",
-      "duration": 2,
-      "reps": 15,
-      "type": "strength"
-    },
-    {
-      "id": "73ca",
-      "name": "Pull ups",
-      "duration": 2,
-      "reps": 123,
-      "type": "strength"
-    },
-    {
-      "id": "5a10",
-      "name": "Pull ups",
-      "duration": 2,
-      "reps": 12431,
-      "type": "strength"
-    },
-    {
-      "id": "f059",
-      "name": "Pull ups",
-      "duration": 2,
-      "reps": 231,
-      "type": "strength"
-    },
-    {
-      "id": "94fd",
-      "name": "Pull ups",
-      "duration": 2,
-      "reps": 20,
-      "type": "strength"
+      "duration": 154,
+      "reps": 10,
+      "type": "cardio"
     }
   ]
 }
