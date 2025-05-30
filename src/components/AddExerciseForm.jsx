@@ -24,6 +24,12 @@ export default function AddExerciseForm({ onAdd }) {
       return;
     }
 
+    const userId = localStorage.getItem("userId");
+    if (!userId) {
+      setError("You must be logged in to add exercises.");
+      return;
+    }
+
     setError("");
 
     axios
@@ -32,6 +38,7 @@ export default function AddExerciseForm({ onAdd }) {
         duration: durationNum,
         reps: repsNum,
         type,
+        userId,
       })
       .then((res) => {
         onAdd(res.data);
@@ -104,7 +111,6 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    // Removed height: "100vh" and background
   },
   form: {
     backgroundColor: "#fff",

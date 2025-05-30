@@ -1,10 +1,12 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate(); // redirect after login
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,11 +19,22 @@ export default function Login() {
     setError("");
 
     axios
-      .get(`http://localhost:3001/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`)
+      .get(
+        `http://localhost:3001/users?email=${encodeURIComponent(
+          email
+        )}&password=${encodeURIComponent(password)}`
+      )
       .then((res) => {
         if (res.data.length === 1) {
+          const user = res.data[0];
+
+          // ✅ Store user ID, username, and email in localStorage
+          localStorage.setItem("userId", user.id);
+          localStorage.setItem("username", user.username);
+          localStorage.setItem("userEmail", user.email);  // <-- Added this line
+
           alert("Login successful!");
-          // TODO: Handle login state, e.g., save user info, redirect, etc.
+          navigate("/dashboard"); // ✅ redirect to dashboard
         } else {
           setError("Invalid email or password.");
         }
@@ -36,9 +49,7 @@ export default function Login() {
       <form style={styles.form} onSubmit={handleSubmit}>
         <h2 style={styles.title}>Login</h2>
 
-        <label style={styles.label} htmlFor="email">
-          Email
-        </label>
+        <label style={styles.label} htmlFor="email">Email</label>
         <input
           style={styles.input}
           id="email"
@@ -48,9 +59,7 @@ export default function Login() {
           placeholder="you@example.com"
         />
 
-        <label style={styles.label} htmlFor="password">
-          Password
-        </label>
+        <label style={styles.label} htmlFor="password">Password</label>
         <input
           style={styles.input}
           id="password"
@@ -62,9 +71,7 @@ export default function Login() {
 
         {error && <p style={styles.error}>{error}</p>}
 
-        <button style={styles.button} type="submit">
-          Log In
-        </button>
+        <button style={styles.button} type="submit">Log In</button>
       </form>
     </div>
   );
@@ -76,16 +83,14 @@ const styles = {
     height: "100vh",
     justifyContent: "center",
     alignItems: "center",
-    background:
-      "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
   },
   form: {
     backgroundColor: "#fff",
     padding: "40px",
     borderRadius: "8px",
-    boxShadow:
-      "0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.06)",
+    boxShadow: "0 4px 6px rgba(0,0,0,0.1), 0 1px 3px rgba(0,0,0,0.06)",
     width: "320px",
     display: "flex",
     flexDirection: "column",

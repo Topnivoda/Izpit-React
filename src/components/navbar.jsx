@@ -1,14 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
+  const navigate = useNavigate();
+
+  const userEmail = localStorage.getItem("userEmail");
+
+  const handleLogout = () => {
+    localStorage.removeItem("userId");
+    localStorage.removeItem("username");
+    localStorage.removeItem("userEmail");
+    navigate("/login");
+  };
+
   return (
     <nav style={styles.navbar}>
       <div style={styles.logo}>🏋️‍♂️ FitTrack</div>
+
       <div style={styles.links}>
         <Link to="/" style={styles.link}>Home</Link>
         <Link to="/dashboard" style={styles.link}>Dashboard</Link>
-        <Link to="/login" style={styles.link}>Login</Link>
-        <Link to="/register" style={styles.link}>Register</Link>
+
+        {!userEmail ? (
+          <>
+            <Link to="/login" style={styles.link}>Login</Link>
+            <Link to="/register" style={styles.link}>Register</Link>
+          </>
+        ) : (
+          <>
+            <span style={styles.email}>Hi, {userEmail}</span>
+            <button onClick={handleLogout} style={styles.logoutButton}>
+              Logout
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );
@@ -35,6 +59,7 @@ const styles = {
   links: {
     display: "flex",
     gap: "20px",
+    alignItems: "center",
   },
   link: {
     color: "white",
@@ -44,9 +69,19 @@ const styles = {
     borderRadius: "4px",
     transition: "background 0.3s",
   },
-};
-
-// Add hover effect via inline style
-styles.link[':hover'] = {
-  backgroundColor: "#4A5568", // slightly lighter gray
+  email: {
+    fontSize: "16px",
+    fontWeight: "600",
+    padding: "8px 16px",
+  },
+  logoutButton: {
+    backgroundColor: "#e53e3e",
+    border: "none",
+    borderRadius: "4px",
+    color: "white",
+    padding: "8px 16px",
+    cursor: "pointer",
+    fontWeight: "600",
+    fontSize: "16px",
+  },
 };

@@ -18,36 +18,12 @@
   ],
   "exercises": [
     {
-      "id": "1",
-      "name": "Running",
-      "duration": 30,
-      "type": "Cardio"
-    },
-    {
-      "id": "2",
-      "name": "Push-ups",
-      "duration": 15,
-      "type": "Strength"
-    },
-    {
-      "id": "7398",
-      "name": "Pull-ups",
-      "duration": 0.3,
-      "type": "strenght"
-    },
-    {
-      "id": "2b52",
-      "name": "PULL UPS",
-      "duration": 4,
-      "reps": 40,
-      "type": "Upper body"
-    },
-    {
-      "id": "01fe",
+      "id": "b955",
       "name": "Pull ups",
-      "duration": 154,
+      "duration": 2,
       "reps": 10,
-      "type": "cardio"
+      "type": "strength",
+      "userId": "db3c"
     }
   ]
 }
