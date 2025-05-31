@@ -1,14 +1,29 @@
-export default function ExerciseList({ exercises }) {
+export default function ExerciseList({ exercises, onToggleComplete }) {
   return (
     <div style={styles.listCard}>
       <h2 style={styles.title}>Your Exercises</h2>
       {exercises.length === 0 && <p>No exercises added yet.</p>}
       {exercises.map((ex) => (
-        <div key={ex.id} style={styles.item}>
-          <strong>{ex.name}</strong><br />
-          Duration: {ex.duration} min<br />
-          Reps: {ex.reps || "N/A"}<br />
-          Type: {ex.type}
+        <div key={ex.id} style={{ 
+          ...styles.item, 
+          ...(ex.completed ? styles.completedItem : {}) 
+        }}>
+          <label style={styles.checkboxLabel}>
+            <input
+              type="checkbox"
+              checked={!!ex.completed}
+              onChange={() => onToggleComplete(ex)}
+              style={styles.checkbox}
+            />
+            <span style={{ textDecoration: ex.completed ? "line-through" : "none" }}>
+              <strong>{ex.name}</strong>
+            </span>
+          </label>
+          <div style={styles.details}>
+            Duration: {ex.duration || "N/A"}<br />
+            Reps: {ex.reps || "N/A"}<br />
+            Type: {ex.type}
+          </div>
         </div>
       ))}
     </div>
@@ -37,5 +52,23 @@ const styles = {
     marginBottom: "10px",
     color: "#333",
     fontWeight: "600",
+  },
+  completedItem: {
+    color: "#888",
+  },
+  checkboxLabel: {
+    display: "flex",
+    alignItems: "center",
+    gap: "10px",
+    cursor: "pointer",
+  },
+  checkbox: {
+    transform: "scale(1.2)",
+    cursor: "pointer",
+  },
+  details: {
+    marginTop: "5px",
+    fontSize: "14px",
+    fontWeight: "normal",
   },
 };

@@ -16,14 +16,5 @@
       "password": "332332"
     }
   ],
-  "exercises": [
-    {
-      "id": "b955",
-      "name": "Pull ups",
-      "duration": 2,
-      "reps": 10,
-      "type": "strength",
-      "userId": "db3c"
-    }
-  ]
+  "exercises": []
 }
