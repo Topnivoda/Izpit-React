@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function AddExerciseForm({ onAdd }) {
+export default function AddExerciseForm({ onAdd, userId }) {
   const [name, setName] = useState("");
   const [reps, setReps] = useState("");
   const [duration, setDuration] = useState("");
@@ -24,22 +24,24 @@ export default function AddExerciseForm({ onAdd }) {
       return;
     }
 
-    const userId = localStorage.getItem("userId");
     if (!userId) {
-      setError("You must be logged in to add exercises.");
+      setError("User not logged in.");
       return;
     }
 
     setError("");
 
+    const newExercise = {
+      name,
+      duration: durationNum,
+      reps: repsNum,
+      type,
+      userId,
+      completed: false,
+    };
+
     axios
-      .post("http://localhost:3001/exercises", {
-        name,
-        duration: durationNum,
-        reps: repsNum,
-        type,
-        userId,
-      })
+      .post("http://localhost:3001/exercises", newExercise)
       .then((res) => {
         onAdd(res.data);
         setName("");

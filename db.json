@@ -16,5 +16,96 @@
       "password": "332332"
     }
   ],
-  "exercises": []
+  "exercises": [
+    {
+      "id": "b14f",
+      "name": "Pull ups",
+      "duration": 10,
+      "reps": 20,
+      "type": "strength",
+      "userId": "db3c",
+      "completed": false
+    },
+    {
+      "id": "46b2",
+      "name": "Pull ups",
+      "duration": 10,
+      "reps": 20,
+      "type": "strength",
+      "userId": "db3c",
+      "completed": false
+    },
+    {
+      "id": "2b1b",
+      "name": "push ups",
+      "duration": 310,
+      "reps": 0,
+      "type": "strength",
+      "userId": "db3c",
+      "completed": false
+    },
+    {
+      "id": "3557",
+      "name": "💪 Push-ups",
+      "reps": "10",
+      "sets": "3",
+      "type": "Strength",
+      "userId": "b7ec",
+      "completed": true
+    },
+    {
+      "id": "3476",
+      "name": "🏋️ Squats",
+      "reps": "15",
+      "sets": "3",
+      "type": "Strength",
+      "userId": "b7ec",
+      "completed": true
+    },
+    {
+      "id": "980a",
+      "name": "🦵 Lunges",
+      "reps": "10",
+      "sets": "3",
+      "type": "Strength",
+      "userId": "b7ec",
+      "completed": true
+    },
+    {
+      "id": "462f",
+      "name": "Pull ups",
+      "duration": 10,
+      "reps": 20,
+      "type": "strength",
+      "userId": "b7ec",
+      "completed": true
+    },
+    {
+      "id": "462f",
+      "name": "Pull ups",
+      "duration": 10,
+      "reps": 20,
+      "type": "strength",
+      "userId": "b7ec",
+      "completed": false
+    },
+    {
+      "id": "361e",
+      "name": "gay shits",
+      "duration": 400,
+      "reps": 1000,
+      "type": "hybrid",
+      "userId": "b7ec",
+      "completed": true
+    },
+    {
+      "id": "361e",
+      "name": "gay shits",
+      "duration": 400,
+      "reps": 1000,
+      "type": "hybrid",
+      "userId": "b7ec",
+      "completed": false
+    }
+  ]
 }

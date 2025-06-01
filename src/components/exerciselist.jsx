@@ -1,31 +1,57 @@
-export default function ExerciseList({ exercises, onToggleComplete }) {
+import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+
+export default function ExerciseList({ exercises, onToggleComplete, onDragEnd }) {
   return (
     <div style={styles.listCard}>
       <h2 style={styles.title}>Your Exercises</h2>
       {exercises.length === 0 && <p>No exercises added yet.</p>}
-      {exercises.map((ex) => (
-        <div key={ex.id} style={{ 
-          ...styles.item, 
-          ...(ex.completed ? styles.completedItem : {}) 
-        }}>
-          <label style={styles.checkboxLabel}>
-            <input
-              type="checkbox"
-              checked={!!ex.completed}
-              onChange={() => onToggleComplete(ex)}
-              style={styles.checkbox}
-            />
-            <span style={{ textDecoration: ex.completed ? "line-through" : "none" }}>
-              <strong>{ex.name}</strong>
-            </span>
-          </label>
-          <div style={styles.details}>
-            Duration: {ex.duration || "N/A"}<br />
-            Reps: {ex.reps || "N/A"}<br />
-            Type: {ex.type}
-          </div>
-        </div>
-      ))}
+
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Droppable droppableId="exercises-list">
+          {(provided) => (
+            <div {...provided.droppableProps} ref={provided.innerRef}>
+              {exercises.map((ex, index) => (
+                <Draggable key={ex.id} draggableId={ex.id.toString()} index={index}>
+                  {(provided, snapshot) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      style={{
+                        ...styles.item,
+                        ...(ex.completed ? styles.completedItem : {}),
+                        backgroundColor: snapshot.isDragging ? "#e0f7fa" : "#fff",
+                        boxShadow: snapshot.isDragging
+                          ? "0 4px 8px rgba(0,0,0,0.2)"
+                          : "none",
+                        ...provided.draggableProps.style,
+                      }}
+                    >
+                      <label style={styles.checkboxLabel}>
+                        <input
+                          type="checkbox"
+                          checked={!!ex.completed}
+                          onChange={() => onToggleComplete(ex)}
+                          style={styles.checkbox}
+                        />
+                        <span style={{ textDecoration: ex.completed ? "line-through" : "none" }}>
+                          <strong>{ex.name}</strong>
+                        </span>
+                      </label>
+                      <div style={styles.details}>
+                        Duration: {ex.duration || "N/A"}<br />
+                        Reps: {ex.reps || "N/A"}<br />
+                        Type: {ex.type}
+                      </div>
+                    </div>
+                  )}
+                </Draggable>
+              ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 }
@@ -48,10 +74,11 @@ const styles = {
   },
   item: {
     borderBottom: "1px solid #eee",
-    paddingBottom: "10px",
+    padding: "10px",
     marginBottom: "10px",
     color: "#333",
     fontWeight: "600",
+    borderRadius: "4px",
   },
   completedItem: {
     color: "#888",
